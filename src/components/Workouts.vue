@@ -1,6 +1,6 @@
 <template>
     <h2>Workouts</h2>
-    <button @click="toggleWorkoutForm" v-if="!showingForm">Add Workout</button>
+    <button @click="toggleWorkoutForm" v-if="!showingForm" id="workoutFormToggle" >Add Workout</button>
     <NewWorkoutForm v-if="showingForm" :cancel="toggleWorkoutForm" :saveWorkout="saveWorkout"/>  
     <div v-if="workouts.length > 0">
         <div v-for="workout in workouts" :key="workout.uuid">
@@ -18,7 +18,7 @@ import NewWorkoutForm from './NewWorkoutForm.vue';
 import WorkoutsData from '../../WorkoutsData.json';
 
 export default {
-    name: 'PreviousWorkouts',
+    name: 'Workouts',
     components: {
         Workout,
         NewWorkoutForm
@@ -32,7 +32,7 @@ export default {
             showingForm: false
         }
     },
-    created() {
+    mounted() {
         this.getWorkouts();
     },
     methods: {

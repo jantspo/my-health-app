@@ -39,7 +39,7 @@ export default {
             disableWorkoutSubmit: false,
         }
     },
-    created(){
+    mounted(){
         this.setExerciseOptions();
     },
     methods: {

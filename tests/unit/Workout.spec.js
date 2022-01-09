@@ -1,6 +1,6 @@
-import {shallowMount} from '@vue/test-utils';
+import {mount, shallowMount} from '@vue/test-utils';
 import Workout from '../../src/components/Workout';
-
+import Exercise from '../../src/components/Exercise';
 describe('Workout', () => {
     const props =  {
         workout: {
@@ -17,13 +17,13 @@ describe('Workout', () => {
         }
     }
     it("Renders a Workout and the associated exercises ", () => {
-        const wrapper = shallowMount(Workout, {
+        const wrapper = mount(Workout, {
             propsData: props
         });
         expect(wrapper.html()).toContain("01/06/2021");
         expect(wrapper.html()).toContain("300");
-        expect(wrapper.findComponent("Exercise")).toBeTruthy();
-        expect(wrapper.findAllComponents("Exercise").length).toBe(1);
+        expect(wrapper.findComponent(Exercise)).toBeTruthy();
+        expect(wrapper.findAllComponents(Exercise).length).toBe(1);
     })
 
     it("Calculates the total calories burned in a workout ", () => {

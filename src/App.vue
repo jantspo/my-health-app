@@ -2,12 +2,12 @@
 
   <ProfileHeader :firstName="user.firstName" :lastName="user.lastName" v-if="!loading" />
   <div v-if="loading">Loading...</div>
-  <PreviousWorkouts :userId="user.id" v-if="!loading" />
+  <Workouts :userId="user.id" v-if="!loading" />
 </template>
 
 <script>
 import ProfileHeader from './components/ProfileHeader.vue'
-import PreviousWorkouts from './components/PreviousWorkouts.vue';
+import Workouts from './components/Workouts.vue';
 
 
 export default {
@@ -15,7 +15,7 @@ export default {
 
   components: {
     ProfileHeader,
-    PreviousWorkouts
+    Workouts
   },
 
   data(){
