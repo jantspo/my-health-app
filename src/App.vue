@@ -8,8 +8,7 @@
 <script>
 import ProfileHeader from './components/ProfileHeader.vue'
 import Workouts from './components/Workouts.vue';
-
-
+import {get} from './helpers/axios.helper';
 export default {
   name: 'App',
 
@@ -31,15 +30,10 @@ export default {
   },
 
   methods: {
-    getUser() {
-      setTimeout(() => {
-        this.user = {
-          firstName: 'John',
-          lastName: 'Sposato',
-          id: 1
-        }
-        this.loading = false;
-      }, 250)
+    async getUser() {
+      const user = await get('/UsersData.json');
+      this.user = user;
+      this.loading = false;
     }
   }
 }

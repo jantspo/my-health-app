@@ -15,7 +15,7 @@
 <script>
 import Workout from './Workout.vue';
 import NewWorkoutForm from './NewWorkoutForm.vue';
-import WorkoutsData from '../../WorkoutsData.json';
+import {get} from '../helpers/axios.helper';
 
 export default {
     name: 'Workouts',
@@ -36,16 +36,16 @@ export default {
         this.getWorkouts();
     },
     methods: {
-        getWorkouts() {
-            setTimeout(() => {
-                this.workouts = WorkoutsData.filter(workout => workout.userId === this.userId);
-            }, 250);
+        // TODO: replace with external get request when server and db setup
+        async getWorkouts() {
+            const data = await get('/WorkoutsData.json');
+            this.workouts = data;
         },
 
         toggleWorkoutForm(){
             this.showingForm = !this.showingForm
         },
-
+        // TODO: replace with real post request when server and db store set up
         saveWorkout(data) {
             this.workouts = [{userId: this.userId, exercises: data, date: new Date(), uuid: this.workouts.length}, ...this.workouts];
         }
