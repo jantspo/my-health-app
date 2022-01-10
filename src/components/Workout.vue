@@ -1,11 +1,14 @@
 <template>
-    <h3>{{workout.date}}</h3>
-    <h4>{{ getTotalCaloriesBurned(workout.exercises) }} Calories burned!</h4>
-    <ul >
-        <li v-for="exercise in workout.exercises" :key="exercise.uuid">
-            <Exercise :name="exercise.name" :calBurned="exercise.calBurned" :totalTime="exercise.totalTime" />    
-        </li>
-    </ul>
+    <div class="Workout" >
+        <h4>{{workout.date}} - {{ getTotalCaloriesBurned(workout.exercises) }} Calories burned!</h4>
+        <h5>Workout Breakdown</h5>
+        <Exercise :name="exercise.name" 
+                :calBurned="exercise.calBurned" 
+                :totalTime="exercise.totalTime" 
+                v-for="(exercise, ind) in workout.exercises" 
+                :exerciseNumber="ind + 1"
+                :key="exercise.uuid"/>
+    </div>
 </template>
 
 <script>
@@ -28,3 +31,10 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.Workout{
+    margin-bottom: 25px;
+    border-bottom: 1px solid grey;
+}    
+</style>

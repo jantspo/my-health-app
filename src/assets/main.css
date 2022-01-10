@@ -1,0 +1,6 @@
+.form-actions{
+    margin-top: 15px;
+}
+.form-actions > * {
+    margin-right: 5px;
+}
