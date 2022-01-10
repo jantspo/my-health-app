@@ -1,8 +1,8 @@
 <template>
     <h2>Workouts</h2>
-    <button @click="toggleWorkoutForm" v-if="!showingForm">Add Workout</button>
+    <button @click="toggleWorkoutForm" v-if="!showingForm" class="btn btn-primary">Add Workout</button>
     <NewWorkoutForm v-if="showingForm" :cancel="toggleWorkoutForm" :saveWorkout="saveWorkout"/>  
-    <div v-if="workouts.length > 0">
+    <div v-if="workouts.length > 0" class="Workouts-workoutsList">
         <div v-for="workout in workouts" :key="workout.uuid">
             <Workout :workout="workout" /> 
         </div>
@@ -52,3 +52,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.Workouts-workoutsList{
+    margin-top: 25px;
+}
+</style>

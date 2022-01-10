@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Push-ups",
+        "calBurned": 20,
+        "uuid": 1
+    },
+    {
+        "name": "Pull-ups",
+        "calBurned": 15,
+        "uuid": 2
+    },
+    {
+        "name": "Squats",
+        "calBurned": 25,
+        "uuid": 3
+    },
+    {
+        "name": "Jumping Jacks",
+        "calBurned": 20,
+        "uuid": 4
+    }
+]

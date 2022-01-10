@@ -1,24 +1,43 @@
 <template>
+<!-- TODO: create seperate component for selecting exercises and adding them to the workout. -->
+<!-- TODO: flesh out for for adding exercises - datepicker - toggle or dropdown to select time or reps - number input for total sets -->
     <form @submit.prevent="addExercise">
-        <label for="exerciseOptions">Exercise</label>
-        <select id="exerciseOptions" v-model="exercise">
-            <option disabled value="">Please select one</option>
-            <option v-for="exercise of exerciseOptions" :key="exercise.uuid" :value="exercise">{{exercise.name}}</option>
-        </select>
-        <label for="exerciseLength">Minutes</label>
-        <input type="number" min="1" id="exerciseLength" v-model="length">
-        <button type="submit" :disabled="disableExerciseSubmit || length === 0 || !exercise">Add</button>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-gorup">
+                    <label for="exerciseOptions" class="form-label" >Exercise</label>
+                    <select id="exerciseOptions" v-model="exercise" class="form-control">
+                        <option disabled value="">Please select one</option>
+                        <option v-for="exercise of exerciseOptions" :key="exercise.uuid" :value="exercise">{{exercise.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exerciseLength" class="form-label" >Minutes</label>
+                    <input type="number" min="1" id="exerciseLength" v-model="length" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 form-actions">
+                <button type="submit" 
+                    :disabled="disableExerciseSubmit || length === 0 || !exercise" 
+                    class="btn btn-primary">
+                    Add
+                </button>
+                <button type="button" @click="cancel" class="btn btn-danger" v-if="exercises.length === 0" >Cancel</button>
+            </div>
+        </div>
     </form>
-
-    <form @submit.prevent="addWorkout">
-        <div v-for="exercise of exercises" :key="exercise.name">
+    <form @submit.prevent="addWorkout" v-if="exercises.length > 0" class="NewWorkoutForm-formWrapper">
+        <div v-for="exercise of exercises" :key="exercise.name" class="NewWorkoutForm-exercises">
             {{exercise.name}}: {{ exercise.calBurned}} calories a minute - {{exercise.totalTime}} total time - {{ exercise.totalTime * exercise.calBurned}} total calories
         </div>
-        <div>
-            <button type="submit" :disabled="disableWorkoutSubmit || exercises.length === 0">Save</button>
-            <button type="button" @click="cancel">Cancel</button>
+        <div class="form-actions">
+            <button type="submit" :disabled="disableWorkoutSubmit || exercises.length === 0" class="btn btn-primary">Save</button>
+            <button type="button" @click="cancel" class="btn btn-danger">Cancel</button>
         </div>
     </form>
+    <hr/>  
 </template>
 
 <script>
@@ -65,4 +84,13 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.NewWorkoutForm-formWrapper{
+    margin-top: 15px;
+}
+.NewWorkoutForm-exercises{
+    font-weight: 500;
+}
+</style>
   

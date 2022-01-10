@@ -1,15 +1,15 @@
 
 
 <template>
-    <div @click="toggle" v-if="!editing">
+    <div @click="toggle" v-if="!editing" class="ProfileHeader">
         <h1>{{firstName}} {{lastName}}</h1>
     </div>
     <div v-if="editing">
         <form @submit="update">
             <input type="text" :value="firstName" id="firstName" ref="firstName" />
             <input type="text" :value="lastName" id="lastName" ref="lastName" />
-            <button type="submit">Save</button>
-            <button type="button" @click="toggle">Cancel</button>
+            <button type="submit" class="btn btn-primary" >Save</button>
+            <button type="button" @click="toggle" class="btn btn-danger">Cancel</button>
         </form>
  
     </div>
@@ -43,3 +43,11 @@ export default  {
     }
 }
 </script>
+
+<style>
+.ProfileHeader{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+</style>

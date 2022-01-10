@@ -1,8 +1,9 @@
 <template>
-
-  <ProfileHeader :firstName="user.firstName" :lastName="user.lastName" v-if="!loading" />
-  <div v-if="loading">Loading...</div>
-  <PreviousWorkouts :userId="user.id" v-if="!loading" />
+  <div class="container">
+    <ProfileHeader :firstName="user.firstName" :lastName="user.lastName" v-if="!loading" />
+    <div v-if="loading">Loading...</div>
+    <PreviousWorkouts :userId="user.id" v-if="!loading" />
+  </div>
 </template>
 
 <script>
