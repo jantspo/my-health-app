@@ -1,7 +1,7 @@
 <template>
-    <div>
-        Type:{{name}}
-        Calories Burned: {{calBurned * totalTime}} ({{calBurned}} per minute)
+    <div class="Exercise">
+        <p class="Exercise-name">{{exerciseNumber}}: {{name}}</p>
+        <p>Calories Burned: {{calBurned * totalTime}} <span class="Exercise-cpm">({{calBurned}} per minute)</span>  </p>
     </div>
 </template>
 
@@ -11,9 +11,21 @@ export default {
     props: {
         name: String,
         calBurned: Number,
-        totalTime: Number
+        totalTime: Number,
+        exerciseNumber: Number
     }
 }
 </script>
+
+<style scoped>
+.Exercise-name{
+    font-weight: 500;
+    font-size: 1.25rem;
+    margin-bottom: .25rem
+}
+.Exercise-cpm{
+    color: rgb(92, 92, 92)
+}
+</style>
   
 
